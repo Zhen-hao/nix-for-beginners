@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Nix for Beginners</title>
+  <meta name="description" content="">
+  <meta name="author" content="Zhenhao Li">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootswatch/3.4.1/amelia/bootstrap.min.css">
+
+  <link rel="stylesheet" href="./frameworks/revealjs/css/reveal.css">
+  <link rel="stylesheet" href="./frameworks/revealjs/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="./highlighters/highlight.js/css/vs2015.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  
+</head>
+<body>
+  
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  
+  <style>
+    .reveal h5 {
+                  text-transform: none;
+          }
+</style>
+
+<h2>Nix for Beginners</h2>
+
+<h3>Haskell Amsterdam Virtual Meetup</h3>
+
+<h4>June 2020</h4>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  
+</section>
+<section>
+   <section class='' data-state=''>
+    <h3>What problems to solve?</h3>
+    <ul class = "build incremental">
+<li>reproducing software/enviorment</li>
+<li>isolating project enviorment</li>
+<li>dependency hell...</li>
+</ul>
+
+<script>$('ul.incremental li').addClass('fragment')</script>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   
+   <section class='' data-state=''>
+    <h3>Solutions</h3>
+
+<ul class = "build incremental">
+<li>infrastructure/deployment as code</li>
+<li>environment as code</li>
+<li>can&#39;t we simply treat dependencies as values?</li>
+</ul>
+
+<script>$('ul.incremental li').addClass('fragment')</script>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   
+</section>
+<section>
+   <section class='' data-state=''>
+    <h3>Solving it the Nix Way</h3>
+    <ul class = "build incremental">
+<li>a pure functional core <code>Nix</code></li>
+<li>a rich ecosystem including <code>nixpkgs</code>, <code>NixOS</code>, <code>NixOps</code>, etc.</li>
+<li>but doesn&#39;t force purity on the user level</li>
+<li>users can treat reproducibility for convenience </li>
+</ul>
+
+<script>$('ul.incremental li').addClass('fragment')</script>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   
+   <section class='' data-state=''>
+    <h3>Who Should Stay Away from Nix?</h3>
+
+<ul class = "build incremental">
+<li>if you don&#39;t value reproducibility at all</li>
+<li>if you don&#39;t enjoy learning</li>
+<li>if you have too slow CPU</li>
+<li>if you have too small disk space</li>
+</ul>
+
+<script>$('ul.incremental li').addClass('fragment')</script>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   
+</section>
+<section>
+   <section class='' data-state=''>
+    <h3>What Is Nix?</h3>
+    <ul class = "build incremental">
+<li>a package manager with built-in utilities</li>
+<li>a pure, lazy, functional language</li>
+<li>the package manager evaluates Nix expressions and writes to <code>/nix/store</code></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   
+   <section class='' data-state=''>
+    <h4>Nix Learning Resources</h4>
+
+<pre><code class="nix">{ stdenv, fetchurl, perl }:
+
+stdenv.mkDerivation {
+  name = &quot;hello-2.1.1&quot;;
+  builder = ./builder.sh;
+  src = fetchurl {
+    url = ftp://ftp.nluug.nl/pub/gnu/hello/hello-2.1.1.tar.gz;
+    sha256 = &quot;1md7jsfd8pa45z73bz1kszpp01yw6x5ljkjk2hx7wl800any6465&quot;;
+  };
+  inherit perl;
+}
+
+</code></pre>
+
+<ul class = "build incremental">
+<li><a href="https://nixos.org/learn.html">https://nixos.org/learn.html</a></li>
+<li><a href="https://nixos.wiki/wiki/Nix_Expression_Language">https://nixos.wiki/wiki/Nix_Expression_Language</a></li>
+<li><a href="https://nixos.org/nix/manual/">https://nixos.org/nix/manual/</a></li>
+<li><a href="https://nixos.org/nixos/nix-pills/">https://nixos.org/nixos/nix-pills/</a></li>
+</ul>
+
+<script>$('ul.incremental li').addClass('fragment')</script>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   
+</section>
+<section>
+   <section class='' data-state=''>
+    <h3>Where to start as a beginner?</h3>
+    <ul class = "build incremental">
+<li><a href="https://nixos.wiki/wiki/Development_environment_with_nix-shell"><code>nix-shell</code></a></li>
+<li><a href="https://nixos.org/nixos/manual/"><code>NixOS</code></a></li>
+<li><a href="https://github.com/NixOS/nixpkgs"><code>nixpkgs</code></a></li>
+<li><a href="https://github.com/rycee/home-manager">Home Manager</a></li>
+</ul>
+
+<script>$('ul.incremental li').addClass('fragment')</script>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   
+   <section class='' data-state=''>
+    <h4>Where to find packages?</h4>
+
+<ul class = "build incremental">
+<li><a href="https://nixos.org/nixos/packages.html?channel=nixos-20.03">https://nixos.org/nixos/packages.html?channel=nixos-20.03</a></li>
+<li><a href="https://nixos.org/nixos/packages.html?channel=nixpkgs-unstable">https://nixos.org/nixos/packages.html?channel=nixpkgs-unstable</a></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   
+   <section class='' data-state=''>
+    <h4>Get Help from the Community</h4>
+
+<ul class = "build incremental">
+<li><a href="https://github.com/NixOS/nixpkgs/issues">Github Issues</a></li>
+<li><a href="https://discourse.nixos.org/">Nix Discourse</a></li>
+<li><a href="functionalprogramming.slack.com">FP Slack</a></li>
+<li><a href="https://nixos.wiki/wiki/Get_In_Touch#:%7E:text=Nix%20community%20chat%20channels%20are,is%20%23nixos%2Dwikilogs.&amp;text=The%20ofborg%20development%20channel.&amp;text=An%20informal%20channel%20for%20chit,topic%20on%20the%20main%20channel.">more</a></li>
+</ul>
+
+<script>$('ul.incremental li').addClass('fragment')</script>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   
+</section>
+<section class='' data-state='' id='slide-6'>
+  <h1>Thank you!</h1>
+  
+  
+</section>
+    </div>
+  </div>
+</body>
+  <script src="./frameworks/revealjs/lib/js/promise.js"></script>
+  <script src="./frameworks/revealjs/js/reveal.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'sky', 
+    transition: Reveal.getQueryHash().transition || 'linear', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: './frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: './frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: './frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: './frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> -->
+
+<script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="./widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="./highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES --> 
+
+</html>
