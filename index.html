@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Nix for Beginners</title>
+  <title>All hands 2020</title>
   <meta name="description" content="">
   <meta name="author" content="Zhenhao Li">
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -24,186 +24,151 @@
       <section class='' data-state='' id='slide-1'>
   
   <style>
+    .reveal h2 {
+                  text-transform: none;
+          }
+    .reveal h3 {
+                  text-transform: none;
+          }
     .reveal h5 {
                   text-transform: none;
           }
+    .reveal section li {
+        font-size: 0.8em;
+        line-height: 1.2em;
+        vertical-align: top;
+    }
+    .reveal section p {
+        font-size: 0.6em;
+        line-height: 1.2em;
+        vertical-align: top;
+    }
 </style>
 
-<h2>Nix for Beginners</h2>
+<h3>Democratizing Knowledge &amp; Empowering Lifelong Learning</h3>
 
-<h3>Haskell Amsterdam Virtual Meetup</h3>
+<div style='text-align: center;'>
+<figure>
+    <img class='plain' src='figure/PairTime_Logo_Blue.png'/>
+</figure>
+</div>
 
-<h4>June 2020</h4>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<h5>marketplace platform for pair problem solving and interactive learning</h5>
 
   
 </section>
-<section>
-   <section class='' data-state=''>
-    <h3>What problems to solve?</h3>
-    <ul class = "build incremental">
-<li>reproducing software/enviorment</li>
-<li>isolating project enviorment</li>
-<li>dependency hell...</li>
+<section class='' data-state='' id='slide-2'>
+  <h3>Problem</h3>
+  <ul>
+<li>Knowledge workers often need expert help to get unstuck but they currently rely on their own network for that.</li>
+<li>People are denied access to certain knowledge because they don&#39;t have the right network.</li>
+<li>When there is a urgent problem, there is no marktplace to bid for on-demand consulting time.</li>
+<li>There is no platform that can get it done without leaving the site.</li>
 </ul>
 
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   
-   <section class='' data-state=''>
-    <h3>Solutions</h3>
-
-<ul class = "build incremental">
-<li>infrastructure/deployment as code</li>
-<li>environment as code</li>
-<li>can&#39;t we simply treat dependencies as values?</li>
-</ul>
-
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   
+  
 </section>
-<section>
-   <section class='' data-state=''>
-    <h3>Solving it the Nix Way</h3>
-    <ul class = "build incremental">
-<li>a pure functional core <code>Nix</code></li>
-<li>a rich ecosystem including <code>nixpkgs</code>, <code>NixOS</code>, <code>NixOps</code>, etc.</li>
-<li>but doesn&#39;t force purity on the user level</li>
-<li>users can treat reproducibility for convenience </li>
+<section class='' data-state='' id='slide-3'>
+  <h3>Solution</h3>
+  <h5>A marketplace platform for people who want to get unstuck or better understand something on one hand, and knowledgable people who want to help others and monetize their experiences and expertise on the other hand, where</h5>
+
+<ul>
+<li>everything users need to get their work done is integrated in the platform, such as payment, chat, and video conferencing. </li>
+<li>users don&#39;t need to install anything, it just works in a browser.</li>
+<li>its matching algorithm provides relavent recommendations to users, better than human search.</li>
 </ul>
 
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   
-   <section class='' data-state=''>
-    <h3>Who Should Stay Away from Nix?</h3>
-
-<ul class = "build incremental">
-<li>if you don&#39;t value reproducibility at all</li>
-<li>if you don&#39;t enjoy learning</li>
-<li>if you have too slow CPU</li>
-<li>if you have too small disk space</li>
-</ul>
-
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   
+  
 </section>
-<section>
-   <section class='' data-state=''>
-    <h3>What Is Nix?</h3>
-    <ul class = "build incremental">
-<li>a package manager with built-in utilities</li>
-<li>a pure, lazy, functional language</li>
-<li>the package manager evaluates Nix expressions and writes to <code>/nix/store</code></li>
+<section class='' data-state='' id='slide-4'>
+  <h3>Why now?</h3>
+  <ul>
+<li>core tech becomes very cheap; our stack is 95% on open source. utility APIs such payments and video conferences have become affordable commodities.</li>
+<li>browsers have become so good that we can do everything we want in our web app.</li>
+<li>machine learning in NLP has made huge progress in the last few years and big companies have released pretrained models that startups can build usable features upon.</li>
+<li>Most companies don&#39;t realize the market potential in lifelong learning and interactive learning.</li>
 </ul>
 
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   
-   <section class='' data-state=''>
-    <h4>Nix Learning Resources</h4>
-
-<pre><code class="nix">{ stdenv, fetchurl, perl }:
-
-stdenv.mkDerivation {
-  name = &quot;hello-2.1.1&quot;;
-  builder = ./builder.sh;
-  src = fetchurl {
-    url = ftp://ftp.nluug.nl/pub/gnu/hello/hello-2.1.1.tar.gz;
-    sha256 = &quot;1md7jsfd8pa45z73bz1kszpp01yw6x5ljkjk2hx7wl800any6465&quot;;
-  };
-  inherit perl;
-}
-
-</code></pre>
-
-<ul class = "build incremental">
-<li><a href="https://nixos.org/learn.html">https://nixos.org/learn.html</a></li>
-<li><a href="https://nixos.wiki/wiki/Nix_Expression_Language">https://nixos.wiki/wiki/Nix_Expression_Language</a></li>
-<li><a href="https://nixos.org/nix/manual/">https://nixos.org/nix/manual/</a></li>
-<li><a href="https://nixos.org/nixos/nix-pills/">https://nixos.org/nixos/nix-pills/</a></li>
-</ul>
-
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   
+  
 </section>
-<section>
-   <section class='' data-state=''>
-    <h3>Where to start as a beginner?</h3>
-    <ul class = "build incremental">
-<li><a href="https://nixos.wiki/wiki/Development_environment_with_nix-shell"><code>nix-shell</code></a></li>
-<li><a href="https://nixos.org/nixos/manual/"><code>NixOS</code></a></li>
-<li><a href="https://github.com/NixOS/nixpkgs"><code>nixpkgs</code></a></li>
-<li><a href="https://github.com/rycee/home-manager">Home Manager</a></li>
+<section class='' data-state='' id='slide-5'>
+  <h3>Market potential</h3>
+  <ul>
+<li>The global workplace training industry has market size of 370.3 billion in 2019<a href="https://www.statista.com/statistics/738399/size-of-the-global-workplace-training-market/"><sup>1</sup></a>. While interactive learning is still not widely recognized, it has potential to take 1% to 10% of that market which <strong>gives us at least 3.7 billion addressable market</strong>.</li>
+<li>The global IT professional services market size was valued at USD 562.06 billion in 2017 and is expected to reach USD 1,070.28 billion by 2025<a href="https://www.grandviewresearch.com/industry-analysis/it-professional-services-market"><sup>2</sup></a>, at least 10% of which is IT support and training services. By 2025, the on-demand support and training will take at least 10% of that, <strong>giving us 10.7 billion addressable market</strong>.</li>
 </ul>
 
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   
-   <section class='' data-state=''>
-    <h4>Where to find packages?</h4>
-
-<ul class = "build incremental">
-<li><a href="https://nixos.org/nixos/packages.html?channel=nixos-20.03">https://nixos.org/nixos/packages.html?channel=nixos-20.03</a></li>
-<li><a href="https://nixos.org/nixos/packages.html?channel=nixpkgs-unstable">https://nixos.org/nixos/packages.html?channel=nixpkgs-unstable</a></li>
-</ul>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   
-   <section class='' data-state=''>
-    <h4>Get Help from the Community</h4>
-
-<ul class = "build incremental">
-<li><a href="https://github.com/NixOS/nixpkgs/issues">Github Issues</a></li>
-<li><a href="https://discourse.nixos.org/">Nix Discourse</a></li>
-<li><a href="functionalprogramming.slack.com">FP Slack</a></li>
-<li><a href="https://nixos.wiki/wiki/Get_In_Touch#:%7E:text=Nix%20community%20chat%20channels%20are,is%20%23nixos%2Dwikilogs.&amp;text=The%20ofborg%20development%20channel.&amp;text=An%20informal%20channel%20for%20chit,topic%20on%20the%20main%20channel.">more</a></li>
-</ul>
-
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   
+  
 </section>
 <section class='' data-state='' id='slide-6'>
-  <h1>Thank you!</h1>
+  <h3>Competition</h3>
+  <h5><a href="https://www.linkedin.com/">LinkedIn</a></h5>
+
+<p>It is a tech company and already has the largest professional network. Our advantage is to enter the market first and to better engage the communities.</p>
+
+<h5><a href="https://clarity.fm/">Clarity</a></h5>
+
+<p>It is a marketplace for on-demand consulting but the collaboration is call-based. We are not worried because it is not a tech company.</p>
+
+<h5>List of freelance marketplace, which don&#39;t have any interactive focus at all:</h5>
+
+<p><a href="https://www.fiverr.com/">Fiverr</a>
+<a href="https://arc.dev/">Arc</a>
+<a href="https://www.canwork.io/">CanWork</a></p>
+
   
+</section>
+<section class='' data-state='' id='slide-7'>
+  <h3>Business model</h3>
+  <h5>Consumer market</h5>
+
+<p>We charge 15% on withdrawals.</p>
+
+<h5>SaaS market</h5>
+
+<p>We charge 5-10 USD per employee per month.</p>
+
+  
+</section>
+<section class='' data-state='' id='slide-8'>
+  <h3>Team (titles can change)</h3>
+  <p>should we add photos?</p>
+
+<h5><a href="https://www.linkedin.com/in/zhenhaoli/">Zhenhao Li</a></h5>
+
+<p>Founder CEO</p>
+
+<h5><a href="https://www.linkedin.com/in/dennisbakhuis/">Dennis Bakhuis</a></h5>
+
+<p>Head of Data Science, Cofounder</p>
+
+<h5><a href="https://www.linkedin.com/in/oonaeager/">Oona Eager</a></h5>
+
+<p>Chief Community Officer (CCO), Cofounder</p>
+
+  
+</section>
+<section class='' data-state='' id='slide-9'>
+  <h3>Financials</h3>
+  <ul>
+<li>no revenue (pre-launch)</li>
+<li>no external funding</li>
+</ul>
+
+<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
+
+  
+</section>
+<section class='' data-state='' id='slide-10'>
+  <h3>Vision</h3>
+  <p>By 2026, we will have</p>
+
+<ul>
+<li><p>enabled our users to take 30% of the total addressable market, meaning 4.2 billion revenue made by all users on PairTime. Our revenue will be more than 400 million, <strong>giving us 80 million per year net profit on a 20% margin</strong>.</p></li>
+<li><p>made a household name for diversity and equality, by engaging communities and running our own social programs.</p></li>
+<li><p>worked together with goverments to help build a lifelong learning work force.</p></li>
+</ul>
+
   
 </section>
     </div>

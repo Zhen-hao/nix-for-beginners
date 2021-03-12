@@ -1,5 +1,5 @@
 ---
-title: Nix for Beginners
+title: All hands 2020
 author: Zhenhao Li
 mode : selfcontained
 knit : slidify::knit2slides
@@ -16,136 +16,149 @@ bootstrap:
   theme: amelia
 ---
 <style>
+    .reveal h2 {
+                  text-transform: none;
+          }
+    .reveal h3 {
+                  text-transform: none;
+          }
     .reveal h5 {
                   text-transform: none;
           }
+    .reveal section li {
+        font-size: 0.8em;
+        line-height: 1.2em;
+        vertical-align: top;
+    }
+    .reveal section p {
+        font-size: 0.6em;
+        line-height: 1.2em;
+        vertical-align: top;
+    }
 </style>
 
 
-## Nix for Beginners
-
-### Haskell Amsterdam Virtual Meetup 
-#### June 2020
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-*** For text alignment check the following
-*** https://github.com/hakimel/reveal.js/issues/1897
-*** https://stackoverflow.com/questions/21019476/how-can-i-get-left-justified-paragraphs-in-reveal-js?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-
-This is the title page.
 
 
---- &vertical
 
-### What problems to solve?
+### Democratizing Knowledge & Empowering Lifelong Learning
 
-> - reproducing software/enviorment
-> - isolating project enviorment
-> - dependency hell...
+<div style='text-align: center;'>
+<figure>
+    <img class='plain' src='figure/PairTime_Logo_Blue.png'/>
+</figure>
+</div>
 
-<script>$('ul.incremental li').addClass('fragment')</script>
+##### marketplace platform for pair problem solving and interactive learning 
 
-***
-
-### Solutions
-
-> - infrastructure/deployment as code
-> - environment as code
-> - can't we simply treat dependencies as values?
-
-<script>$('ul.incremental li').addClass('fragment')</script>
-
---- &vertical
-
-### Solving it the Nix Way
-
-> - a pure functional core `Nix`
-> - a rich ecosystem including `nixpkgs`, `NixOS`, `NixOps`, etc.
-> - but doesn't force purity on the user level
-> - users can treat reproducibility for convenience 
-
-
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-***
-
-### Who Should Stay Away from Nix?
-
-> - if you don't value reproducibility at all
-> - if you don't enjoy learning
-> - if you have too slow CPU
-> - if you have too small disk space
-
-<script>$('ul.incremental li').addClass('fragment')</script>
-
---- &vertical
-
-### What Is Nix?
-
-> - a package manager with built-in utilities
-> - a pure, lazy, functional language
-> - the package manager evaluates Nix expressions and writes to `/nix/store`
-
-
-***
-
-#### Nix Learning Resources
-
-```nix
-{ stdenv, fetchurl, perl }:
-
-stdenv.mkDerivation {
-  name = "hello-2.1.1";
-  builder = ./builder.sh;
-  src = fetchurl {
-    url = ftp://ftp.nluug.nl/pub/gnu/hello/hello-2.1.1.tar.gz;
-    sha256 = "1md7jsfd8pa45z73bz1kszpp01yw6x5ljkjk2hx7wl800any6465";
-  };
-  inherit perl;
-}
-
-```
-
-> - https://nixos.org/learn.html
-> - https://nixos.wiki/wiki/Nix_Expression_Language
-> - https://nixos.org/nix/manual/
-> - https://nixos.org/nixos/nix-pills/
-
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-
---- &vertical
-
-### Where to start as a beginner?
-
-> - [`nix-shell`](https://nixos.wiki/wiki/Development_environment_with_nix-shell)
-> - [`NixOS`](https://nixos.org/nixos/manual/)
-> - [`nixpkgs`](https://github.com/NixOS/nixpkgs)
-> - [Home Manager](https://github.com/rycee/home-manager)
-
-<script>$('ul.incremental li').addClass('fragment')</script>
-
-***
-
-#### Where to find packages?
-
-> - https://nixos.org/nixos/packages.html?channel=nixos-20.03
-> - https://nixos.org/nixos/packages.html?channel=nixpkgs-unstable
-
-
-***
-
-#### Get Help from the Community
-
-> - [Github Issues](https://github.com/NixOS/nixpkgs/issues)
-> - [Nix Discourse](https://discourse.nixos.org/)
-> - [FP Slack](functionalprogramming.slack.com)
-> - [more](https://nixos.wiki/wiki/Get_In_Touch#:~:text=Nix%20community%20chat%20channels%20are,is%20%23nixos%2Dwikilogs.&text=The%20ofborg%20development%20channel.&text=An%20informal%20channel%20for%20chit,topic%20on%20the%20main%20channel.)
-
-<script>$('ul.incremental li').addClass('fragment')</script>
 
 ---
 
-# Thank you! 
+### Problem
+
+- Knowledge workers often need expert help to get unstuck but they currently rely on their own network for that.
+- People are denied access to certain knowledge because they don't have the right network.
+- When there is a urgent problem, there is no marktplace to bid for on-demand consulting time.
+- There is no platform that can get it done without leaving the site.
+
+---
+
+### Solution
+
+##### A marketplace platform for people who want to get unstuck or better understand something on one hand, and knowledgable people who want to help others and monetize their experiences and expertise on the other hand, where
+
+- everything users need to get their work done is integrated in the platform, such as payment, chat, and video conferencing. 
+- users don't need to install anything, it just works in a browser.
+- its matching algorithm provides relavent recommendations to users, better than human search.
+
+
+---
+
+### Why now?
+
+- core tech becomes very cheap; our stack is 95% on open source. utility APIs such payments and video conferences have become affordable commodities.
+- browsers have become so good that we can do everything we want in our web app.
+- machine learning in NLP has made huge progress in the last few years and big companies have released pretrained models that startups can build usable features upon.
+- Most companies don't realize the market potential in lifelong learning and interactive learning.
+
+---
+
+
+
+###  Market potential
+
+- The global workplace training industry has market size of 370.3 billion in 2019[^1]. While interactive learning is still not widely recognized, it has potential to take 1% to 10% of that market which **gives us at least 3.7 billion addressable market**.
+- The global IT professional services market size was valued at USD 562.06 billion in 2017 and is expected to reach USD 1,070.28 billion by 2025[^2], at least 10% of which is IT support and training services. By 2025, the on-demand support and training will take at least 10% of that, **giving us 10.7 billion addressable market**.
+
+[^1]: https://www.statista.com/statistics/738399/size-of-the-global-workplace-training-market/
+[^2]: https://www.grandviewresearch.com/industry-analysis/it-professional-services-market
+
+---
+
+### Competition
+
+##### [LinkedIn](https://www.linkedin.com/)
+
+It is a tech company and already has the largest professional network. Our advantage is to enter the market first and to better engage the communities.
+
+##### [Clarity](https://clarity.fm/)
+
+It is a marketplace for on-demand consulting but the collaboration is call-based. We are not worried because it is not a tech company.
+
+##### List of freelance marketplace, which don't have any interactive focus at all:
+
+[Fiverr](https://www.fiverr.com/)
+[Arc](https://arc.dev/)
+[CanWork](https://www.canwork.io/)
+
+---
+
+### Business model 
+
+##### Consumer market
+
+We charge 15% on withdrawals.
+
+##### SaaS market
+
+We charge 5-10 USD per employee per month.
+
+
+---
+
+### Team (titles can change)
+
+should we add photos?
+
+##### [Zhenhao Li](https://www.linkedin.com/in/zhenhaoli/)
+Founder CEO
+
+##### [Dennis Bakhuis](https://www.linkedin.com/in/dennisbakhuis/)
+Head of Data Science, Cofounder
+
+##### [Oona Eager](https://www.linkedin.com/in/oonaeager/)
+Chief Community Officer (CCO), Cofounder
+
+---
+
+### Financials
+
+- no revenue (pre-launch)
+- no external funding
+
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png)
+
+---
+
+
+### Vision
+
+By 2026, we will have
+
+- enabled our users to take 30% of the total addressable market, meaning 4.2 billion revenue made by all users on PairTime. Our revenue will be more than 400 million, **giving us 80 million per year net profit on a 20% margin**.
+
+- made a household name for diversity and equality, by engaging communities and running our own social programs.
+
+- worked together with goverments to help build a lifelong learning work force.
+
 
